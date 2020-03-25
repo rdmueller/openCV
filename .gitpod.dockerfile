@@ -62,7 +62,7 @@ RUN source "$HOME/.sdkman/bin/sdkman-init.sh" && \
 
 RUN pip install numpy
 
-WORKDIR /
+#WORKDIR /
 ENV OPENCV_VERSION="4.1.1"
 RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
 && unzip ${OPENCV_VERSION}.zip \
