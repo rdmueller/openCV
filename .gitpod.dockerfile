@@ -66,8 +66,9 @@ RUN pip install numpy
 ENV OPENCV_VERSION="4.1.1"
 RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
 && unzip ${OPENCV_VERSION}.zip \
-&& mkdir opencv-${OPENCV_VERSION}/cmake_binary \
-&& cd opencv-${OPENCV_VERSION}/cmake_binary \
+&& mkdir opencv-${OPENCV_VERSION}/cmake_binary 
+
+RUN cd opencv-${OPENCV_VERSION}/cmake_binary \
 && cmake -DBUILD_TIFF=ON \
   -DBUILD_opencv_java=OFF \
   -DWITH_CUDA=OFF \
@@ -84,9 +85,9 @@ RUN wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
   -DPYTHON_EXECUTABLE=$(which python3.7) \
   -DPYTHON_INCLUDE_DIR=$(python3.7 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
   -DPYTHON_PACKAGES_PATH=$(python3.7 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
-  .. \
-&& make install \
-&& rm ${OPENCV_VERSION}.zip \
+  .. 
+RUN make install 
+RUN rm ${OPENCV_VERSION}.zip \
 && rm -r opencv-${OPENCV_VERSION}
 RUN ln -s \
   /usr/local/python/cv2/python-3.7/cv2.cpython-37m-x86_64-linux-gnu.so \
