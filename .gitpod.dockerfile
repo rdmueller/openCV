@@ -18,6 +18,26 @@ RUN curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - &
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*;
 
+# for openCV
+RUN apt-get update \
+    && apt-get install -y \
+        build-essential \
+        cmake \
+        git \
+        wget \
+        unzip \
+        yasm \
+        pkg-config \
+        libswscale-dev \
+        libtbb2 \
+        libtbb-dev \
+        libjpeg-dev \
+        libpng-dev \
+        libtiff-dev \
+        libavformat-dev \
+        libpq-dev \
+    && rm -rf /var/lib/apt/lists/*;
+
 # Set up JAVA_CMD (required by Leiningen)
 ENV JAVA_CMD /home/gitpod/.sdkman/candidates/java/current/bin/java
 ENV PATH $JAVA_CMD:$PATH
@@ -39,24 +59,6 @@ RUN source "$HOME/.sdkman/bin/sdkman-init.sh" && \
     sdk install groovy && \
     sdk install java
 
-RUN apt-get update \
-    && apt-get install -y \
-        build-essential \
-        cmake \
-        git \
-        wget \
-        unzip \
-        yasm \
-        pkg-config \
-        libswscale-dev \
-        libtbb2 \
-        libtbb-dev \
-        libjpeg-dev \
-        libpng-dev \
-        libtiff-dev \
-        libavformat-dev \
-        libpq-dev 
-#    && rm -rf /var/lib/apt/lists/*;
 
 RUN pip install numpy
 
