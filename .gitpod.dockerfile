@@ -78,6 +78,7 @@ RUN cd opencv-${OPENCV_VERSION}/cmake_binary \
   -DWITH_TBB=ON \
   -DWITH_EIGEN=ON \
   -DWITH_V4L=ON \
+  -DBUILD_aruco=ON \
   -DBUILD_TESTS=OFF \
   -DBUILD_PERF_TESTS=OFF \
   -DCMAKE_BUILD_TYPE=RELEASE \
@@ -87,8 +88,8 @@ RUN cd opencv-${OPENCV_VERSION}/cmake_binary \
   -DPYTHON_PACKAGES_PATH=$(python3.7 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
   .. 
 RUN cd opencv-${OPENCV_VERSION}/cmake_binary && make install 
-RUN rm ${OPENCV_VERSION}.zip \
-&& rm -r opencv-${OPENCV_VERSION}
+# RUN rm ${OPENCV_VERSION}.zip \
+# && rm -r opencv-${OPENCV_VERSION}
 RUN ln -s \
   /usr/local/python/cv2/python-3.7/cv2.cpython-37m-x86_64-linux-gnu.so \
   /usr/local/lib/python3.7/site-packages/cv2.so
