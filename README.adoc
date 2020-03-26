@@ -40,7 +40,7 @@ If you stuck some markers to the walls and objects in a room, you should be able
 As soon as you know the positions of the markers, these define a coordinate system in which you camera lives.
 For the next picture you analyze, you can now calculate the position of the camera relative to all other markers.
 
-=== Scan the Room
+== Scan the Room
 
 Now imagine you have several AruCo markers distributed all over a place.
 You could now "drive" with a mobile phone or another camera on a made up track (put the camera on a selfie-stick).
