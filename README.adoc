@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/rdmueller/openCV) 
+
 = Robo-Vision Experiments
 
 The goal of this repository is to explore some posibilities for robot vision for autonomous driving RC cars.
