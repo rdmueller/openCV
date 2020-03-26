@@ -1,0 +1,47 @@
+= Robo-Vision Experiments
+
+The goal of this repository is to explore some posibilities for robot vision for autonomous driving RC cars.
+
+The https://www.donkeycar.com/[donkeycar] project tries to solve the robo-vision problem with machine learning.
+It records the camara picture together with the human steering information and maps both through offline machine learning.
+This is quite inaccurate and doesn't allow the car to learn to drive better.
+The main problem I see with this approach is that the car does not know when it is off-track or on-track.
+If it would know about its position, it could learn to speed up on a straight part of the track
+and it could even try to drift.
+
+== How could we get the position of the car?
+
+There are several ways to get a position:
+
+=== GPS
+
+Not accurate enough for a small rc car and does not work indoors.
+It would need additional sensors to get a more accurate position.
+
+=== Bluetooth beacons
+
+Also not accurate enough.
+
+=== Marker based camera pose estimation
+
+That's the right approach! :-)
+
+openCV comes with the ArUco-Marker library to detect markers and do camera pose estimation.
+The library returns the translation and rotation of the markers found in an image relative to the camera as the center of the coordinate system.
+With only one marker in view, you get the orientation of the marker relative to the camera.
+
+With two markers in view, the magic starts.
+Now you know the positon of two markers relative to the camera and hence the position of both markers relative to each other.
+
+If you stuck some markers to the walls and objects in a room, you should be able to easily "scan" the room and discover the position of all markers relative to each other - you only have to get images with two or more markers in one picture.
+
+As soon as you know the positions of the markers, these define a coordinate system in which you camera lives.
+For the next picture you analyze, you can now calculate the position of the camera relative to all other markers.
+
+=== Scan the Room
+
+Now imagine you have several AruCo markers distributed all over a place.
+You could now "drive" with a mobile phone or another camera on a made up track (put the camera on a selfie-stick).
+The resulting video can not only be used to "scan" all markers relative to each other.
+It can also be used to calculate the path the camera has taken and define it as a virtual path for a virtual race track.
+Now it should be easy to put the rc car on this track and let it race...
