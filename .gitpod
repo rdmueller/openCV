@@ -5,4 +5,4 @@ ports:
 - port: 8888
   onOpen: open-browser
 tasks:
-  - command: "echo 'have fun!'"
+  - command: "pip install jupyter && mkdir /home/gitpod/.jupyter && cp jupyter_notebook_config.py /home/gitpod/.jupyter/."
