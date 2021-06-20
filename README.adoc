@@ -47,3 +47,7 @@ You could now "drive" with a mobile phone or another camera on a made up track (
 The resulting video can not only be used to "scan" all markers relative to each other.
 It can also be used to calculate the path the camera has taken and define it as a virtual path for a virtual race track.
 Now it should be easy to put the rc car on this track and let it race...
+
+== How to Run 
+
+The code needs `pip install jupyter opencv-contrib-python`, because aruco is part of the contrib package
