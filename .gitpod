@@ -5,4 +5,4 @@ ports:
 - port: 8888
   onOpen: open-browser
 tasks:
-  - command: "sudo apt-get install -y libgl1-mesa-dev && pip install jupyter opencv-contrib-python && mkdir /home/gitpod/.jupyter && cp jupyter_notebook_config.py /home/gitpod/.jupyter/. && jupyter notebook"
+  - command: "apt-get install -y libgl1-mesa-dev && pip install jupyter opencv-contrib-python && mkdir /home/gitpod/.jupyter && cp jupyter_notebook_config.py /home/gitpod/.jupyter/. && jupyter notebook"
